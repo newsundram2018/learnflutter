@@ -11,23 +11,64 @@ void main() {
   );
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  var myname = "My name IS Sundram";
+  TextEditingController _nameController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey,
       appBar: AppBar(
         title: Text("Awesome App"),
       ),
       body: Center(
-        child: Container(
-          width: 100,
-          height: 100,
-          color: Colors.teal,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: SingleChildScrollView(
+            child: Card(
+              child: Column(
+                children: <Widget>[
+                  Image.asset(
+                    "assets/bg1.jpeg",
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Text(
+                    myname,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: TextField(
+                        controller: _nameController,
+                        decoration: InputDecoration(
+                          hintText: "Enter Sum Text",
+                          labelText: "Name",
+                          border: OutlineInputBorder(),
+                        ),
+                      ))
+                ],
+              ),
+            ),
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.edit),
+        onPressed: () {
+          myname = _nameController.text;
+          setState(() {});
+        },
+        child: Icon(Icons.send),
       ),
       drawer: Drawer(
         child: ListView(
@@ -49,6 +90,7 @@ class HomePage extends StatelessWidget {
               title: Text("Sundram Mishra"),
               subtitle: Text("Developer"),
               trailing: Icon(Icons.edit),
+              onTap: () {},
             ),
             ListTile(
               leading: Icon(
