@@ -6,9 +6,7 @@ void main() {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomePage(),
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue),
     ),
   );
 }
@@ -20,34 +18,46 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Awesome App"),
       ),
-      body: Container(
-        width: 500,
-        color: Colors.teal,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+      body: Center(
+        child: Container(
+          width: 100,
+          height: 100,
+          color: Colors.teal,
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.edit),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: const EdgeInsets.all(0),
           children: <Widget>[
-            Container(
-              padding: const EdgeInsets.all(20),
-              width: 100,
-              height: 100,
-              color: Colors.red,
-              alignment: Alignment.center,
+            UserAccountsDrawerHeader(
+              accountName: Text("Sundram"),
+              accountEmail: Text("Samjio2016@gmil.com"),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: NetworkImage(
+                    "https://avatars0.githubusercontent.com/u/39513887?s=460&u=cc35e83e6eebd05a18ccbf3c0ec15b27322b07f7&v=4"),
+              ),
+              //arrowColor: Colors.amber,
             ),
-            Container(
-              padding: const EdgeInsets.all(20),
-              width: 100,
-              height: 100,
-              color: Colors.yellow,
-              alignment: Alignment.center,
+            ListTile(
+              leading: Icon(
+                Icons.person,
+              ),
+              title: Text("Sundram Mishra"),
+              subtitle: Text("Developer"),
+              trailing: Icon(Icons.edit),
             ),
-            Container(
-              padding: const EdgeInsets.all(20),
-              width: 100,
-              height: 100,
-              color: Colors.green,
-              alignment: Alignment.center,
-            )
+            ListTile(
+              leading: Icon(
+                Icons.email,
+              ),
+              title: Text("Email"),
+              subtitle: Text("samjio2016@gmail.com"),
+              trailing: Icon(Icons.edit),
+            ),
           ],
         ),
       ),
